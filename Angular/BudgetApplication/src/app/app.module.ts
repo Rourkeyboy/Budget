@@ -6,15 +6,24 @@ import { BudgetComponent } from './views/budget/budget.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// shared modules
+import {MatButtonModule} from '@angular/material/button';
+import {SaveDataService} from './services/save-data.service';
 // header component and navigation imports
 import { HeaderComponent } from './views/header/header.component';
   import {MatIconModule} from '@angular/material/icon';
-  import {MatButtonModule} from '@angular/material/button';
   import {MatToolbarModule} from '@angular/material/toolbar';
   import {MatSidenavModule} from '@angular/material/sidenav';
 // navigation
   import { NavigationComponent } from './views/header/navigation/navigation.component';
     import {MatTreeModule} from '@angular/material/tree';
+// stepper component
+import { StepperTestComponent } from './views/stepper-test/stepper-test.component';
+  import {MatInputModule} from '@angular/material/input';
+  import {MatFormFieldModule} from '@angular/material/form-field';
+  import {MatStepperModule} from '@angular/material/stepper';
+  import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +32,8 @@ import { HeaderComponent } from './views/header/header.component';
 
     //Toolbar components
     HeaderComponent,
-    NavigationComponent
+    NavigationComponent,
+    StepperTestComponent
     //End Toolbar components
 
   ],
@@ -34,17 +44,21 @@ import { HeaderComponent } from './views/header/header.component';
     RouterModule.forRoot([
       //router paths
       {path: 'budget', component: BudgetComponent},
+      {path: 'stepper', component: StepperTestComponent},
     ]),
     //END router module
     
     BrowserAnimationsModule,
     
     //Toolbar
-    MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, MatTreeModule
+    MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, MatTreeModule,
     //END Toolbar imports
 
+    //Stepper
+    MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule, ReactiveFormsModule,
+    //END Stepper imports
   ],
-  providers: [],
+  providers: [SaveDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
