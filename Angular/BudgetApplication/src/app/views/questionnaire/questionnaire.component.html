@@ -18,7 +18,7 @@
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Fill out your address</ng-template>
         <mat-form-field>
-          <mat-label> {{SaveDataService.financialInfo.firstName}}</mat-label>
+          <mat-label> {{QuestionnaireService.FinancialInformation.firstName}}</mat-label>
           <input matInput formControlName="secondCtrl" placeholder="1 Billion Dollars"
                  required>
         </mat-form-field>
