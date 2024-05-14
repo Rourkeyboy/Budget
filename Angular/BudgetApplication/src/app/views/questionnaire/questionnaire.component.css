@@ -6,3 +6,11 @@
     margin-top: 16px;
   }
   
+  .currency-input-field {
+    text-align: right;
+  }
+  
+  input.currency-input-field::-webkit-outer-spin-button,
+  input.currency-input-field::-webkit-inner-spin-button {
+    display: none;
+  }

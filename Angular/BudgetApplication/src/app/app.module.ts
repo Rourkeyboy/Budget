@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // shared modules
 import {MatButtonModule} from '@angular/material/button';
-import {QuestionnaireService} from './services/questionnaire.service';
+import {FinancialInfoService} from './services/financial-info.service';
 // header component and navigation imports
   import {MatIconModule} from '@angular/material/icon';
   import {MatToolbarModule} from '@angular/material/toolbar';
@@ -58,7 +58,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule, ReactiveFormsModule, MatListModule,
     //END Stepper imports
   ],
-  providers: [QuestionnaireService],
+  providers: [FinancialInfoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

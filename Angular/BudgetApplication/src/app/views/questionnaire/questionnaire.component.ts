@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {QuestionnaireService} from '../../services/questionnaire.service';
-
+import {FinancialInfoService} from '../../services/financial-info.service';
 
 /**
  * @title Questionnaire
@@ -18,12 +17,16 @@ export class QuestionnaireComponent {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
+  thirdFormGroup = this._formBuilder.group({
+    thirdCtrl: ['', Validators.required],
+  });
   isLinear = false;
+  hide = true;
 
-  QuestionnaireService: QuestionnaireService;
+  FinancialInfoService: FinancialInfoService;
 
-  constructor(private _formBuilder: FormBuilder, questionnaireService: QuestionnaireService) {
+  constructor(private _formBuilder: FormBuilder, financialInfoService: FinancialInfoService) {
 
-    this.QuestionnaireService = questionnaireService;
+    this.FinancialInfoService = financialInfoService;
   }
 }
