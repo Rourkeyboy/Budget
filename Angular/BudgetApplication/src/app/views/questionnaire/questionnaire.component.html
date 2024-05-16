@@ -1,60 +1,79 @@
 <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" floatLabel="always">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your income</ng-template>
-        <mat-label>Wages or Salary  </mat-label>
-        <mat-form-field>
-          <mat-label> {{FinancialInfoService.firstName}}</mat-label>
-          <input matInput type="number" formControlName="secondCtrl" class="currency-input-field"
-                 placeholder="0" required>
-                 <span matTextPrefix>$&nbsp;</span>
-                 <span matTextSuffix>.00</span>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="thirdFormGroup" floatLabel="always">
-      <form [formGroup]="thirdFormGroup">
-        <ng-template matStepLabel>Fill out your expenses</ng-template>
-        <mat-label>Rent or Mortgage  </mat-label>
-        <mat-form-field>
-          <mat-label> {{FinancialInfoService.firstName}}</mat-label>
-          <input matInput type="number" formControlName="thirdCtrl" class="currency-input-field"
-                 placeholder="0" required>
-                 <span matTextPrefix>$&nbsp;</span>
-                 <span matTextSuffix>.00</span>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>Fill out your name</ng-template>
+    <form [formGroup]="firstFormGroup">
+      <mat-form-field>
+        <mat-label>First</mat-label>
+        <input matInput placeholder="Name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" floatLabel="always">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your income</ng-template>
+      <mat-label>Wages or Salary </mat-label>
+      <mat-form-field>
+        <mat-label> {{FinancialInfoService.firstName}}</mat-label>
+        <input matInput type="number" formControlName="secondCtrl" class="currency-input-field" placeholder="0"
+          required>
+        <span matTextPrefix>$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+      </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button matStepperNext>Next</button>
       </div>
-    </mat-step>
-  </mat-stepper>
-  
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" floatLabel="always">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Fill out your expenses</ng-template>
+      <mat-label>Rent or Mortgage </mat-label>
+      <mat-form-field>
+        <mat-label> {{FinancialInfoService.firstName}}</mat-label>
+        <input matInput type="number" formControlName="thirdCtrl" class="currency-input-field" placeholder="0" required>
+        <span matTextPrefix>$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+
+  <mat-step [stepControl]="thirdFormGroup" floatLabel="always">
+    <ng-template matStepLabel>Fill out your expenses</ng-template>
+    <form [formGroup]="thirdFormGroup">
+      <div *ngFor="let question of questions" class="form-row">
+        <mat-form-field>
+          <mat-label>{{question.label}}</mat-label>
+          <input matInput placeholder="{{question.value}}" formControlName="firstCtrl" required>
+        </mat-form-field>
+        </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
