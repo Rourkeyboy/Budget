@@ -15,27 +15,27 @@ export class FinancialQuestionService {
     // this would call an api that houses our question and metadata
     const questions: FinancialQuestionBase<string>[] = [
       new FinancialTextboxQuestion({
-        key: 'firstName',
+        key: 'firstNameCtrl',
         label: 'First name',
-        value: 'rourke',
+        value: 'John',
         required: true,
         order: 1,
       }),
 
       new FinancialTextboxQuestion({
-        key: 'firstNameTwo',
-        label: 'First name',
-        value: 'chaz',
-        type: 'email',
+        key: 'lastNameCtrl',
+        label: 'Last name',
+        value: 'Snow',
+        //type: 'email',
         order: 2,
       }),
 
       new FinancialTextboxQuestion({
-        key: 'firstNameThree',
-        label: 'First name',
-        value: 'test',
-        type: 'email',
-        order: 2,
+        key: 'addressNameCtrl',
+        label: 'Address',
+        value: '123 John Snow lives here',
+        //type: 'email',
+        order: 3,
       }),
     ];
 

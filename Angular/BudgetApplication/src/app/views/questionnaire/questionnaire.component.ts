@@ -22,6 +22,11 @@ export class QuestionnaireComponent {
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
   });
+  personalInformationFormGroup = this._formBuilder.group({
+    firstNameCtrl: ['', Validators.required],
+    lastNameCtrl: ['', Validators.required],
+    addressNameCtrl: ['', Validators.required],
+  });
   isLinear = false;
   hide = true;
 
@@ -34,5 +39,16 @@ export class QuestionnaireComponent {
     this.FinancialInfoService = financialInfoService;
     this.FinancialQS = financialQS;
     this.questions = this.FinancialQS.getFinancialQuestions();
+
+  }
+
+  onSubmit() : void {
+    if (this.personalInformationFormGroup.valid) {
+      // Serialize form data to JSON
+      const formData = this.personalInformationFormGroup.value;
+      console.log('Form Data:', formData);
+
+      // Here you can pass the formData to another service for further processing
+    }
   }
 }
