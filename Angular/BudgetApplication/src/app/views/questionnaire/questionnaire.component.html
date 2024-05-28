@@ -52,7 +52,7 @@
 
   <mat-step [stepControl]="personalInformationFormGroup" floatLabel="always">
     <ng-template matStepLabel>Fill out your expenses</ng-template>
-    <form [formGroup]="personalInformationFormGroup" (ngSubmit)="onSubmit()">
+    <form [formGroup]="personalInformationFormGroup">
       <div *ngFor="let question of questions" class="form-row">
         <mat-form-field>
           <mat-label>{{question.label}}</mat-label>
@@ -60,8 +60,8 @@
         </mat-form-field>
         </div>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious type="button">Back</button>
+        <button mat-button matStepperNext type="button">Next</button>
       </div>
     </form>
   </mat-step>
@@ -76,7 +76,7 @@
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
-      <button mat-raised-button type="submit">Submit</button>
+      <button mat-raised-button (click)="onSubmit()" type="button">Submit Form</button>
     </div>
   </mat-step>
 </mat-stepper>
