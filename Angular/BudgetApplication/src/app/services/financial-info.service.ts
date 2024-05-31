@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root', 
@@ -6,15 +7,16 @@ import { Injectable } from '@angular/core';
 
 // Service that holds information from the questionnaire
 export class FinancialInfoService {
-  public firstName: string;
-  public lastName: string;
-  public income: number | null;
-  public expenses: number | null;
-
-  constructor() {
-    this.firstName = "";
-    this.lastName = "";
-    this.income = 0;
-    this.expenses = 0;
-  }
+    private name!: string;
+  
+    constructor() { 
+    }
+  
+    setInputValue(value: string) {
+      this.name = value;
+    }
+  
+    getInputValue(): string{
+      return this.name;
+    }
 }
