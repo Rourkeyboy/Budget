@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 import {FinancialInfoService} from '../../services/financial-info.service';
 import { FinancialQuestionBase } from 'src/app/services/financial-questions/financial-question-base';
 import { FinancialQuestionService } from 'src/app/services/financial-questions/financial-question.service';
+import { FinancialQuestionControlService } from 'src/app/services/financial-questions/financial-question-control.service';
 
 /**
  * @title Questionnaire
@@ -22,33 +23,40 @@ export class QuestionnaireComponent {
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
   });
-  personalInformationFormGroup = this._formBuilder.group({
-    firstNameCtrl: ['', Validators.required],
-    lastNameCtrl: ['', Validators.required],
-    addressNameCtrl: ['', Validators.required],
-  });
+
+
   isLinear = false;
   hide = true;
 
   FinancialInfoService: FinancialInfoService;
   FinancialQS: FinancialQuestionService;
 
+  formGroups: { [key: string]: FormGroup } = {};
+  sections: any[];
+
   questions: FinancialQuestionBase<string>[];
 
-  constructor(private _formBuilder: FormBuilder, financialInfoService: FinancialInfoService, financialQS: FinancialQuestionService) {
+  constructor(private _formBuilder: FormBuilder, financialInfoService: FinancialInfoService, financialQS: FinancialQuestionService, financialQCS: FinancialQuestionControlService) {
     this.FinancialInfoService = financialInfoService;
     this.FinancialQS = financialQS;
     this.questions = this.FinancialQS.getFinancialQuestions();
 
+    this._formBuilder.group(financialQCS.toFormGroup(this.questions));
+    this.sections = financialQCS.getSections(this.questions);
+        // Initialize a FormGroup for each section
+    this.sections.forEach(section => {
+      this.formGroups[section.sectionName] = financialQCS.toFormGroup(section.questions);
+    });
+
   }
 
   onSubmit() : void {
-    if (this.personalInformationFormGroup.valid) {
-      // Serialize form data to JSON
-      const formData = this.personalInformationFormGroup.value;
-      console.log('Form Data:', formData);
+  //   if (this.personalInformationFormGroup.valid) {
+  //     // Serialize form data to JSON
+  //     const formData = this.personalInformationFormGroup.value;
+  //     console.log('Form Data:', formData);
 
-      // Here you can pass the formData to another service for further processing
-    }
+  //     // Here you can pass the formData to another service for further processing
+  //   }
   }
 }

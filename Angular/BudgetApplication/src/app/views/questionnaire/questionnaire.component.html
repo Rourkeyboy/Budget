@@ -49,24 +49,24 @@
   </mat-step>
 
 
-
-  <mat-step [stepControl]="personalInformationFormGroup" floatLabel="always">
-    <ng-template matStepLabel>Fill out your expenses</ng-template>
-    <form [formGroup]="personalInformationFormGroup">
-      <div *ngFor="let question of questions" class="form-row">
-        <mat-form-field>
-          <mat-label>{{question.label}}</mat-label>
-          <input matInput placeholder="{{question.value}}" formControlName="{{question.key}}" required>
-        </mat-form-field>
+  <div *ngFor="let section of sections">
+    <mat-step [stepControl]="formGroups[section.sectionName]" floatLabel="always">
+      <form [formGroup]="formGroups[section.sectionName]">
+        <ng-template matStepLabel>{{ section.sectionName }}</ng-template>
+        <div *ngFor="let question of section.questions" class="form-row">
+          <mat-form-field>
+            <mat-label>{{question.label}}</mat-label>
+            <input matInput placeholder="{{question.value}}" formControlName="{{question.key}}" required>
+          </mat-form-field>
         </div>
+      </form>
       <div>
         <button mat-button matStepperPrevious type="button">Back</button>
         <button mat-button matStepperNext type="button">Next</button>
       </div>
-    </form>
-  </mat-step>
+    </mat-step>
+  </div>
 
-  
 
 
 
