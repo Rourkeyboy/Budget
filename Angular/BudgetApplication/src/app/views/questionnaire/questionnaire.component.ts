@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {FinancialInfoService} from '../../services/financial-info.service';
+import { IUser } from 'src/app/models/user.model';
 
 /**
  * @title Questionnaire
@@ -11,9 +12,10 @@ import {FinancialInfoService} from '../../services/financial-info.service';
   styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent {
-  firstName: string;
-  income: number;
-  expense: number;
+  users: any;
+  firstName: string = '';
+  lastName: string = ''
+  private financialInfoService: FinancialInfoService = inject(FinancialInfoService);
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -27,24 +29,36 @@ export class QuestionnaireComponent {
   isLinear = false;
   hide = true;
 
-  FinancialInfoService: FinancialInfoService;
+  constructor(private _formBuilder: FormBuilder) {
+    this.users = [
 
-  constructor(private _formBuilder: FormBuilder, financialInfoService: FinancialInfoService) {
-    this.income = 0;
-    this.expense = 0;
-
-    this.FinancialInfoService = financialInfoService;
-    this.firstName = this.FinancialInfoService.getInputValue();
-    // this.firstName = this.FinancialInfoService.getNameValue();
+    ];
   }
 
-  saveInputValue() {
-    this.FinancialInfoService.setInputValue(this.firstName);
-    console.log('Value saved:', this.firstName);
+  ngOnInit(): void {
+    this.loadUsers();
   }
 
-  getInputValue() {
-    this.FinancialInfoService.getInputValue();
+  loadUsers(): void {
+    this.users = this.financialInfoService.getUsers();
   }
+
+  addUser(): void {
+    if (this.firstName.trim()) {
+      const newUser = new IUser(this.firstName, this.lastName);
+      this.financialInfoService.addUser(newUser);
+      // this.loadUsers(); // Refresh the user list
+    }
+  }
+
+
+  // saveInputValue() {
+  //   this.FinancialInfoService.setUserValue(this.firstName);
+  //   console.log('Value saved:', this.firstName);
+  // }
+
+  // getInputValue() {
+  //   this.FinancialInfoService.getInputValue();
+  // }
 
 }

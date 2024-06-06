@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { first } from 'rxjs';
+import { IUser } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root', 
@@ -7,16 +7,17 @@ import { first } from 'rxjs';
 
 // Service that holds information from the questionnaire
 export class FinancialInfoService {
-    private name!: string;
+    private users: IUser[] = [];
   
     constructor() { 
     }
   
-    setInputValue(value: string) {
-      this.name = value;
+    addUser(user: IUser) {
+      this.users.push(user);
+      console.log(`user ${user.firstName}`)
     }
   
-    getInputValue(): string{
-      return this.name;
+    getUsers(): IUser[] {
+      return this.users;
     }
 }
