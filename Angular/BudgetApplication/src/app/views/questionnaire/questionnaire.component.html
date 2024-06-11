@@ -48,16 +48,13 @@
     </form>
   </mat-step>
 
-
+  
   <div *ngFor="let section of sections">
     <mat-step [stepControl]="formGroups[section.sectionName]" floatLabel="always">
       <form [formGroup]="formGroups[section.sectionName]">
         <ng-template matStepLabel>{{ section.sectionName }}</ng-template>
         <div *ngFor="let question of section.questions" class="form-row">
-          <mat-form-field>
-            <mat-label>{{question.label}}</mat-label>
-            <input matInput placeholder="{{question.value}}" formControlName="{{question.key}}" required>
-          </mat-form-field>
+          <app-question [question]="question" [form]="formGroups[section.sectionName]"></app-question>
         </div>
       </form>
       <div>
@@ -66,8 +63,6 @@
       </div>
     </mat-step>
   </div>
-
-
 
 
   <mat-step>

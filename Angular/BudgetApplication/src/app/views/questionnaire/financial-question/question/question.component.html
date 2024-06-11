@@ -1,0 +1,11 @@
+<div [formGroup]="form">
+    <mat-form-field>
+        <mat-label>{{question.label}}</mat-label>
+        <input matInput placeholder="{{question.value}}" formControlName="{{question.key}}" required>
+    </mat-form-field>
+</div>
+
+<!-- <mat-form-field>
+    <mat-label>{{question.label}}</mat-label>
+    <input matInput placeholder="{{question.value}}" formControlName="{{question.key}}" required>
+</mat-form-field> -->

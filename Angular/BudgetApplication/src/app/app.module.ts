@@ -24,7 +24,7 @@ import { QuestionnaireComponent } from './views/questionnaire/questionnaire.comp
   import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { NavigationComponent } from './navigation/navigation.component';
-import { QuestionGroupComponent } from './views/questionnaire/financial-question/question-group/question-group.component';
+import { QuestionComponent } from './views/questionnaire/financial-question/question/question.component';
 
 
 @NgModule({
@@ -35,7 +35,7 @@ import { QuestionGroupComponent } from './views/questionnaire/financial-question
     //Toolbar components
     NavigationComponent,
     QuestionnaireComponent,
-    QuestionGroupComponent
+    QuestionComponent
     //End Toolbar components
 
   ],
