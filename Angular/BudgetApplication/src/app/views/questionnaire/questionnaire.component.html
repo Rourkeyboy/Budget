@@ -5,21 +5,23 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <mat-label>First Name</mat-label>
-          <input [(ngModel)]="firstName" type="text" matInput placeholder="John" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Last Name</mat-label>
-          <input [(ngModel)]="lastName" type="text" matInput placeholder="Doe" formControlName="firstCtrl" required>
-        </mat-form-field>
+        <div class="form-container">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input [(ngModel)]="newUser.firstName" type="text" matInput placeholder="John" formControlName="firstCtrl" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input [(ngModel)]="newUser.lastName" type="text" matInput placeholder="Doe" formControlName="firstCtrl" required>
+          </mat-form-field>
+        </div>
         <div>
           <button (click)="addUser()" mat-button>Save</button>
-          <button (click)="loadUsers()" mat-button>Load</button>
           <button mat-button matStepperNext>Next</button>
+          <h2>User List</h2>
           <ul>
             <li *ngFor="let user of users">
-              {{ user.firstName }} {{ user.lastName }}
+              {{ user.firstName }} ({{ user.lastName }})
             </li>
           </ul>
         </div>

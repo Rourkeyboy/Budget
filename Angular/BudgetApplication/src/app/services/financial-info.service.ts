@@ -14,7 +14,6 @@ export class FinancialInfoService {
   
     addUser(user: IUser) {
       this.users.push(user);
-      console.log(`user ${user.firstName}`)
     }
   
     getUsers(): IUser[] {

@@ -12,10 +12,9 @@ import { IUser } from 'src/app/models/user.model';
   styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent {
-  users: any;
-  firstName: string = '';
-  lastName: string = ''
-  private financialInfoService: FinancialInfoService = inject(FinancialInfoService);
+  users: IUser[] = [];
+  newUser: IUser = { firstName: '', lastName: '' }
+  // private financialInfoService: FinancialInfoService = inject(FinancialInfoService);
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -29,10 +28,7 @@ export class QuestionnaireComponent {
   isLinear = false;
   hide = true;
 
-  constructor(private _formBuilder: FormBuilder) {
-    this.users = [
-
-    ];
+  constructor(private _formBuilder: FormBuilder, private financialInfoService: FinancialInfoService) {
   }
 
   ngOnInit(): void {
@@ -44,9 +40,8 @@ export class QuestionnaireComponent {
   }
 
   addUser(): void {
-    if (this.firstName.trim()) {
-      const newUser = new IUser(this.firstName, this.lastName);
-      this.financialInfoService.addUser(newUser);
+    if (this.newUser.firstName) {
+      this.financialInfoService.addUser(this.newUser);
       // this.loadUsers(); // Refresh the user list
     }
   }
