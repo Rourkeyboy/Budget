@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FinancialQuestionBase } from './financial-question-base';
 import { FinancialTextboxQuestion } from './financial-question-textbox';
+import { FinancialDropdownQuestion } from './financial-question-dropdown';
 //import { of } from 'rxjs';
 
 @Injectable({
@@ -36,6 +37,17 @@ export class FinancialQuestionService {
         value: '123 John Snow lives here',
         //type: 'email',
         order: 3,
+      }),
+      new FinancialDropdownQuestion({
+        key: 'brave',
+        label: 'Bravery Rating',
+        options: [
+          {key: 'solid',  value: 'Solid'},
+          {key: 'great',  value: 'Great'},
+          {key: 'good',   value: 'Good'},
+          {key: 'unproven', value: 'Unproven'}
+        ],
+        order: 3
       }),
     ];
 

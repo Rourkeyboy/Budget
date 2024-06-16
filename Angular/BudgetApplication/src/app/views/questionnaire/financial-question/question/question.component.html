@@ -1,11 +1,17 @@
 <div [formGroup]="form">
     <mat-form-field>
+        <div [ngSwitch]="question.controlType">
+        
         <mat-label>{{question.label}}</mat-label>
-        <input matInput placeholder="{{question.value}}" formControlName="{{question.key}}" required>
+
+        <input matInput *ngSwitchCase="'textbox'"  placeholder="{{question.value}}" formControlName="{{question.value}}">
+
+        <mat-select *ngSwitchCase="'dropdown'" formControlName="{{ question.key }}">
+            <mat-option *ngFor="let option of question.options" [value]="option.value">
+                {{ option.value }}
+              </mat-option>
+        </mat-select>
+
+        </div>
     </mat-form-field>
 </div>
-
-<!-- <mat-form-field>
-    <mat-label>{{question.label}}</mat-label>
-    <input matInput placeholder="{{question.value}}" formControlName="{{question.key}}" required>
-</mat-form-field> -->

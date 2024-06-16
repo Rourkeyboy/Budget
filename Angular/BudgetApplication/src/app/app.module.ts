@@ -25,6 +25,10 @@ import { QuestionnaireComponent } from './views/questionnaire/questionnaire.comp
 import { MatListModule } from '@angular/material/list';
 import { NavigationComponent } from './navigation/navigation.component';
 import { QuestionComponent } from './views/questionnaire/financial-question/question/question.component';
+//
+
+// MatSelect
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -59,6 +63,9 @@ import { QuestionComponent } from './views/questionnaire/financial-question/ques
     //Stepper
     MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule, ReactiveFormsModule, MatListModule,
     //END Stepper imports
+
+    //Select (dropdown)
+    MatSelectModule
   ],
   providers: [FinancialInfoService],
   bootstrap: [AppComponent]

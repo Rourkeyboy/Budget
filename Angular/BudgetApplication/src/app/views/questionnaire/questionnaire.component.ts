@@ -14,17 +14,6 @@ import { FinancialQuestionControlService } from 'src/app/services/financial-ques
   styleUrls: ['./questionnaire.component.css']
 })
 export class QuestionnaireComponent {
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
-  thirdFormGroup = this._formBuilder.group({
-    thirdCtrl: ['', Validators.required],
-  });
-
-
   isLinear = false;
   hide = true;
 
@@ -41,7 +30,7 @@ export class QuestionnaireComponent {
     this.FinancialQS = financialQS;
     this.questions = this.FinancialQS.getFinancialQuestions();
 
-    this._formBuilder.group(financialQCS.toFormGroup(this.questions));
+    //this._formBuilder.group(financialQCS.toFormGroup(this.questions));
     this.sections = financialQCS.getSections(this.questions);
         // Initialize a FormGroup for each section
     this.sections.forEach(section => {
