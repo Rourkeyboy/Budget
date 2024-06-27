@@ -12,7 +12,7 @@ export class FinancialQuestionService {
 
   constructor() { }
 
-  getFinancialQuestions(){
+  getPersonalInfoQuestions(){
     // this would call an api that houses our question and metadata
     const questions: FinancialQuestionBase<string>[] = [
       new FinancialTextboxQuestion({
@@ -48,6 +48,38 @@ export class FinancialQuestionService {
           {key: 'unproven', value: 'Unproven'}
         ],
         order: 3
+      }),
+    ];
+
+    // return the questions according to the order defined
+    return questions;
+    
+    //below is an example of rxjs using of. This may be useful when running to an api to gather data
+    //return of(questions.sort((a, b) => a.order - b.order));
+    
+
+  }
+
+  getFinancialQuestions(){
+    // this would call an api that houses our question and metadata
+    const questions: FinancialQuestionBase<string>[] = [
+      new FinancialTextboxQuestion({
+        key: 'incomeEarned',
+        label: 'Yearly Income',
+        value: '$50,000',
+        required: true,
+        order: 1,
+      }),
+      new FinancialDropdownQuestion({
+        key: 'dependents',
+        label: 'Number of Dependents',
+        options: [
+          {key: 'one',  value: '1'},
+          {key: 'two',  value: '2'},
+          {key: 'three',   value: '3'},
+          {key: 'four', value: '4'}
+        ],
+        order: 2
       }),
     ];
 

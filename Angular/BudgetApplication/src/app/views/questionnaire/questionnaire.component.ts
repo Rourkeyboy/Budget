@@ -23,12 +23,13 @@ export class QuestionnaireComponent {
   formGroups: { [key: string]: FormGroup } = {};
   sections: any[];
 
-  questions: FinancialQuestionBase<string>[];
+  questions: FinancialQuestionBase<string>[][] = [];
 
   constructor(private _formBuilder: FormBuilder, financialInfoService: FinancialInfoService, financialQS: FinancialQuestionService, financialQCS: FinancialQuestionControlService) {
     this.FinancialInfoService = financialInfoService;
     this.FinancialQS = financialQS;
-    this.questions = this.FinancialQS.getFinancialQuestions();
+    this.questions.push(this.FinancialQS.getPersonalInfoQuestions());
+    this.questions.push(this.FinancialQS.getFinancialQuestions());
 
     //this._formBuilder.group(financialQCS.toFormGroup(this.questions));
     this.sections = financialQCS.getSections(this.questions);

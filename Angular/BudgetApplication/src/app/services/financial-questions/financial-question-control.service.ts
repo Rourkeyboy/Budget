@@ -19,16 +19,16 @@ export class FinancialQuestionControlService {
     return new FormGroup(group);
   }
 
-  getSections(questions: FinancialQuestionBase<string>[]) {
+  getSections(questions: FinancialQuestionBase<string>[][]) {
     return [
       {
         sectionName: 'Personal Information',
-        questions: questions,
+        questions: questions[0],
       },
-      // {
-      //   sectionName: 'Address',
-      //   questions: questions,
-      // },
+       {
+         sectionName: 'Financial Information',
+         questions: questions[1],
+       },
       // Add more sections as needed
     ];
   }
