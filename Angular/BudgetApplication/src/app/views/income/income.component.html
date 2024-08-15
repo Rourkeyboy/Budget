@@ -1,0 +1,22 @@
+<main>
+<form [formGroup]="incomeAdditionForm.incomeAdditionForm" (ngSubmit)="ngOnInit()">
+  <header> INCOME </header>
+
+  <div class="financial-input-item" *ngFor="let item of incomeItems">
+    <label [for]="item.id">{{ item.label }}</label>
+    <span class ="financial-input">
+      <input 
+        type="number"
+        placeholder="0.00" 
+        [id]="item.id"
+        [formControlName]="item.formControlName">
+      <span>USD</span>
+    </span>
+  </div>
+</form>
+
+  <div class ="total">
+    <label for="total-income">TOTAL INCOME</label>
+    <span class="total-number">{{ totalIncome | currency }} USD</span>
+  </div>
+</main>

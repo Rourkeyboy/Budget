@@ -30,6 +30,7 @@ export class QuestionnaireComponent {
     this.FinancialQS = financialQS;
     this.questions.push(this.FinancialQS.getPersonalInfoQuestions());
     this.questions.push(this.FinancialQS.getFinancialQuestions());
+    this.questions.push(this.FinancialQS.getExpenses());
 
     //this._formBuilder.group(financialQCS.toFormGroup(this.questions));
     this.sections = financialQCS.getSections(this.questions);

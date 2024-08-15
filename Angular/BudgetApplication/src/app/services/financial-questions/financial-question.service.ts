@@ -85,10 +85,28 @@ export class FinancialQuestionService {
 
     // return the questions according to the order defined
     return questions;
-    
-    //below is an example of rxjs using of. This may be useful when running to an api to gather data
-    //return of(questions.sort((a, b) => a.order - b.order));
-    
+  }
 
+  getExpenses(){
+    // this would call an api that houses our question and metadata
+    const questions: FinancialQuestionBase<string>[] = [
+      new FinancialTextboxQuestion({
+        key: 'expense1',
+        label: 'Expense 1',
+        value: '$50,000',
+        required: true,
+        order: 1,
+      }),
+      new FinancialTextboxQuestion({
+        key: 'expense2',
+        label: 'Expense 2',
+        value: '$40,000',
+        required: true,
+        order: 1,
+      }),
+    ];
+
+    // return the questions according to the order defined
+    return questions;
   }
 }

@@ -11,7 +11,7 @@
         <div *ngFor="let question of section.questions" class="form-row">
           <app-question [question]="question" [form]="formGroups[section.sectionName]"></app-question>
         </div>
-
+ 
       </form>
       <div>
         <button mat-button matStepperPrevious type="button">Back</button>

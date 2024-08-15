@@ -1,0 +1,46 @@
+<app-income></app-income>
+<div class="app-container">
+<main>
+<header> RECOMMENDED BUDGET </header>
+<p>All recommended percentages are from Dave Ramsey's book "Total Money Makeover"</p>
+
+<div *ngIf="greaterThanTotalPercentage" class="error-message">
+    The total percentage cannot exceed 100%. Please adjust individual percentages.
+</div>
+
+<div *ngIf="equalsTotalPercentage" class="equals-message">
+    The total recommended % equals 100! Good job!
+</div>
+
+<div *ngIf="lessThanTotalPercentage" class="less-than-message">
+    Please use the sliders on the right to adjust individual percentages so the total = 100%.
+</div>
+
+<div class="recommended-item" *ngFor="let item of recommendedItems">
+  <span class="recommended-item-amount">{{ item.amount | currency }} USD</span>
+  <label [for]="item.id">{{ item.label }}</label>
+    <input 
+      type="range" 
+      [id]="item.id" 
+      [min]="item.min" 
+      [max]="item.max" 
+      [step]="stepAmount"
+      [(ngModel)]="item.percentage"
+      (change)="updateAmounts()">
+    <span>{{ (item.percentage * 100) | number }}%</span>
+</div>
+
+<div class="recommended-total">
+  <br>
+  <label>Total:</label>
+  <span class="total-amount">{{ totalRecommendedAmount | currency }} USD</span>
+  <span class="total-percentage" 
+      [ngClass]="{
+          'greater-than-total': greaterThanTotalPercentage, 
+          'less-than-total': lessThanTotalPercentage,
+          'equals-total': equalsTotalPercentage}">
+      {{ totalPercentage * 100 | number }}%
+  </span>
+</div>
+</main>
+</div>

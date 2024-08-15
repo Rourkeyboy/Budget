@@ -30,6 +30,12 @@ import { QuestionComponent } from './views/questionnaire/financial-question/ques
 // MatSelect
 import {MatSelectModule} from '@angular/material/select';
 
+// Overview
+import { OverviewComponent } from './views/overview/overview.component';
+import { IncomeComponent } from './views/income/income.component';
+import { ExpensesComponent } from './views/expenses/expenses.component';
+import { NetIncomeComponent } from './views/net-income/net-income.component';
+import { RecommendedComponent } from './views/recommended/recommended.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +45,16 @@ import {MatSelectModule} from '@angular/material/select';
     //Toolbar components
     NavigationComponent,
     QuestionnaireComponent,
-    QuestionComponent
+    QuestionComponent,
+    OverviewComponent,
+    RecommendedComponent,
     //End Toolbar components
+
+    //Financial Components
+    IncomeComponent,
+    ExpensesComponent,
+    NetIncomeComponent
+    //
 
   ],
   imports: [
@@ -51,6 +65,8 @@ import {MatSelectModule} from '@angular/material/select';
       //router paths
       {path: 'budget', component: BudgetComponent},
       {path: 'questionnaire', component: QuestionnaireComponent},
+      {path: 'overview', component: OverviewComponent},
+      {path: 'recommended', component: RecommendedComponent},
     ]),
     //END router module
     

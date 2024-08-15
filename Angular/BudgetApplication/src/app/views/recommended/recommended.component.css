@@ -1,0 +1,55 @@
+.total-percentage {
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-left: 140px;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .greater-than-total {
+    color: red;
+  }
+  
+  .equals-message {
+    color: green;
+    margin-bottom: 10px;
+  }
+  
+  .equals-total {
+    color: green;
+  }
+  
+  .less-than-message {
+    color: orange;
+  }
+
+  .less-than-total {
+    color: orange;
+  }
+  
+  .recommended-item-amount {
+    margin-right: 10px;
+  }
+
+  .recommended-item {
+    margin-bottom: 1rem;
+  }
+  
+  .slider-container {
+    text-align: right;
+  }
+  
+  .slider-container label {
+    display: inline-block;
+    width: 100px; /* Adjust width as needed */
+  }
+  
+  .slider-container input[type="range"] {
+    width: 150px;
+  }

@@ -25,10 +25,14 @@ export class FinancialQuestionControlService {
         sectionName: 'Personal Information',
         questions: questions[0],
       },
-       {
-         sectionName: 'Financial Information',
-         questions: questions[1],
-       },
+      {
+        sectionName: 'Financial Information',
+        questions: questions[1],
+      },
+      {
+        sectionName: 'Expenses',
+        questions: questions[2],
+      },
       // Add more sections as needed
     ];
   }
