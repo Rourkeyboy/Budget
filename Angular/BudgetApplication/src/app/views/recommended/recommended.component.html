@@ -5,7 +5,7 @@
 <p>All recommended percentages are from Dave Ramsey's book "Total Money Makeover"</p>
 
 <div *ngIf="greaterThanTotalPercentage" class="error-message">
-    The total percentage cannot exceed 100%. Please adjust individual percentages.
+    The total % cannot exceed 100%. Please adjust individual %.
 </div>
 
 <div *ngIf="equalsTotalPercentage" class="equals-message">
@@ -13,7 +13,7 @@
 </div>
 
 <div *ngIf="lessThanTotalPercentage" class="less-than-message">
-    Please use the sliders on the right to adjust individual percentages so the total = 100%.
+    Please use the sliders on the right to adjust individual % so the total = 100%.
 </div>
 
 <div class="recommended-item" *ngFor="let item of recommendedItems">

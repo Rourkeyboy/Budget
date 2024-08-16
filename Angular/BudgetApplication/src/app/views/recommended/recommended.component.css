@@ -1,7 +1,5 @@
 .total-percentage {
     padding: 0.5rem 0;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
     margin-top: 0.5rem;
     margin-left: 140px;
     font-weight: bold;
@@ -9,7 +7,7 @@
   
   .error-message {
     color: red;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   
   .greater-than-total {
@@ -18,7 +16,7 @@
   
   .equals-message {
     color: green;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   
   .equals-total {
@@ -27,6 +25,7 @@
   
   .less-than-message {
     color: orange;
+    margin-bottom: 15px;
   }
 
   .less-than-total {
@@ -47,7 +46,7 @@
   
   .slider-container label {
     display: inline-block;
-    width: 100px; /* Adjust width as needed */
+    width: 100px;
   }
   
   .slider-container input[type="range"] {
