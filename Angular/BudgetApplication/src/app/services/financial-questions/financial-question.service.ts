@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+
 import { FinancialQuestionBase } from './financial-question-base';
 import { FinancialTextboxQuestion } from './financial-question-textbox';
 import { FinancialDropdownQuestion } from './financial-question-dropdown';
+import { Observable } from 'rxjs';
 //import { of } from 'rxjs';
 
 @Injectable({
@@ -10,8 +12,16 @@ import { FinancialDropdownQuestion } from './financial-question-dropdown';
 })
 export class FinancialQuestionService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
+  getValuesFromServer(){
+    return this.http.get(`https://localhost:7110/api/cities`);
+  }
+
+  getData(): Observable<any> {
+    return this.http.get<any>(`https://localhost:7110/api/cities`);
+  }
+  
   getPersonalInfoQuestions(){
     // this would call an api that houses our question and metadata
     const questions: FinancialQuestionBase<string>[] = [

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BudgetComponent } from './views/budget/budget.component';
@@ -45,7 +47,7 @@ import {MatSelectModule} from '@angular/material/select';
   ],
   imports: [
     BrowserModule,
-    
+
     //router module
     RouterModule.forRoot([
       //router paths
@@ -67,7 +69,7 @@ import {MatSelectModule} from '@angular/material/select';
     //Select (dropdown)
     MatSelectModule
   ],
-  providers: [FinancialInfoService],
+  providers: [FinancialInfoService, importProvidersFrom(HttpClientModule)],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

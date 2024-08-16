@@ -48,5 +48,14 @@ export class QuestionnaireComponent {
 
   //     // Here you can pass the formData to another service for further processing
   //   }
+    //let test = this.FinancialQS.getValuesFromServer();
+    this.FinancialQS.getData().subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.error('Error fetching data', error);
+      }
+    );
   }
 }
