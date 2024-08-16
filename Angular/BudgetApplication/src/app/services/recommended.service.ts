@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { IncomeService } from './income.service';
+
 import { RecommendedItem } from '../models/recommended-item.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecommendedService {
-  constructor(private incomeService: IncomeService) {}
+  constructor() {}
+
   private items: RecommendedItem[] = [
     new RecommendedItem('Giving', 'giving-slider', 0.10, 0.10, 0.15),
     new RecommendedItem('Saving', 'savings-slider', 0.05, 0.05, 0.10),

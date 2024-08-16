@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NetIncomeService } from 'src/app/services/net-income.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class NetIncomeComponent implements OnInit {
   constructor( private netIncomeService: NetIncomeService ) { }
   
   ngOnInit() {
-    this.netIncomeService.getNetBalance().subscribe(netIncome => {
+    this.netIncomeService.getNetTotal().subscribe(netIncome => {
       this.totalNetIncome = netIncome;
     });
   }

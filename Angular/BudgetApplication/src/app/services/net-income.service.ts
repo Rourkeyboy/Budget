@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ExpenseService } from 'src/app/services/expense.service';
-import { IncomeService } from 'src/app/services/income.service';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { ExpenseService } from 'src/app/services/expense.service';
+import { IncomeService } from 'src/app/services/income.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,7 @@ export class NetIncomeService {
     private incomeService: IncomeService
   ) { }
 
-  getNetBalance(): Observable<number> {
+  getNetTotal(): Observable<number> {
     return combineLatest([
       this.expenseService.getExpenseTotal(),
       this.incomeService.getIncomeTotal()
