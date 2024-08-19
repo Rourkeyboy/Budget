@@ -17,6 +17,8 @@ export class RecommendedComponent implements OnInit {
   greaterThanTotalPercentage: boolean = false;
   equalsTotalPercentage: boolean = false;
   lessThanTotalPercentage: boolean = true;
+  sliderMode: string = 'ramsey';
+  customPercentage: number = 0;
 
   recommendedItems: RecommendedItem[] = [];
 
@@ -36,7 +38,11 @@ export class RecommendedComponent implements OnInit {
   updateAmounts(): void {
     if (this.income !== null) {
       this.recommendedItems.forEach(item => {
-        item.amount = this.income! * item.percentage;
+        if (this.sliderMode === 'ramsey') {
+          item.amount = this.income! * item.percentage;
+        } else {
+          item.amount = this.income! * this.customPercentage;
+        }
       });
       this.calculateTotalRecommendedAmount();
       this.calculateTotalPercentage();
@@ -48,7 +54,9 @@ export class RecommendedComponent implements OnInit {
   }
 
   calculateTotalPercentage(): void {
-    const total = this.recommendedItems.reduce((total, item) => total + item.percentage, 0);
+    const total = this.recommendedItems.reduce((total, item) => {
+      return total + (this.sliderMode === 'ramsey' ? item.percentage : this.customPercentage);
+    }, 0);
     this.totalPercentage = Math.round(total * 100) / 100;
     this.greaterThanTotalPercentage = this.totalPercentage > 1.001;
     this.lessThanTotalPercentage = this.totalPercentage < 1;
