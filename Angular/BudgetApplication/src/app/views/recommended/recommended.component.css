@@ -15,12 +15,12 @@
   }
   
   .equals-message {
-    color: green;
+    color: rgb(21, 235, 21);
     margin-bottom: 15px;
   }
   
   .equals-total {
-    color: green;
+    color: rgb(21, 235, 21);
   }
   
   .less-than-message {
