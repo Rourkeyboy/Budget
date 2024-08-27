@@ -2,3 +2,112 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+main {
+    padding: 2rem;
+    display: grid;
+    place-items: center;
+  }
+
+  header {
+    font-weight: bold;
+  }
+
+  label {
+    display: inline-block;
+    width: 200px;
+    height: 1px;
+    margin-left: 1rem;
+  }
+
+  .financial-input-item{
+    width: max-content;
+    padding: .5rem 0;
+    margin-top: .5rem;
+  
+    &:focus-within {
+      outline: 2px solid #86a8df;
+    }
+  }
+
+  input {
+    margin-left: 1rem;
+    width: min-content ;
+  }
+  
+  .recommended-item {
+    width: max-content;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+  
+    &:focus-within {
+      outline: 2px solid #86a8df;
+    }
+  }
+  
+  .recommended-item-amount {
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    padding: 0.5rem 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: 0.5rem;
+  
+    & span {
+      margin: 0 1rem;
+    }
+  }
+  
+  .total {
+    display: inline-block;
+    padding-top: 2rem;
+    margin-left: 2rem;
+  }
+  
+  .total-number{
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  
+    & span {
+      margin: 0 1rem;
+    }
+  }
+  
+  .financial-input {
+    border: 1px solid #ddd;
+    border-radius: 1px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+  
+    & span {
+      margin: 0 1rem;
+    }
+  }
+
+  .form-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-field label {
+    display: block;
+    padding: 1rem;
+    
+    &:focus-within {
+      outline: 2px solid #86a8df;
+    }
+  }
+  
+  .form-field input {
+    flex: 1;
+    width: max-content;
+    padding: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: max-content;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+  }

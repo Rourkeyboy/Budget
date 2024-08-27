@@ -1,0 +1,63 @@
+<app-income></app-income>
+<div class="app-container">
+  <main>
+    <header>RECOMMENDED BUDGET</header>
+    <br>
+
+    <div>
+      <label>
+        <input type="radio" name="sliderMode" [(ngModel)]="sliderMode" value="ramsey" (change)="loadItems()"> Dave Ramsey
+      </label>
+      <label>
+        <input type="radio" name="sliderMode" [(ngModel)]="sliderMode" value="custom" (change)="loadItems()"> Custom
+      </label>
+    </div>
+
+    <p *ngIf="sliderMode === 'ramsey'">
+      All recommended percentages are from Dave Ramsey's book "Total Money Makeover"
+    </p>
+    <p *ngIf="sliderMode === 'custom'">
+      You can customize the percentages for each category.
+    </p>
+
+    <div *ngIf="greaterThanTotalPercentage" class="error-message">
+      The total percentage cannot exceed 100%. Please adjust individual percentages.
+    </div>
+
+    <div *ngIf="equalsTotalPercentage" class="equals-message">
+      The total recommended % equals 100! Good job!
+    </div>
+
+    <div *ngIf="lessThanTotalPercentage" class="less-than-message">
+      Please use the sliders to adjust individual percentages so the total equals 100%.
+    </div>
+
+    <div class="recommended-item" *ngFor="let item of recommendedItems">
+      <span class="recommended-item-amount">{{ item.amount | currency }} USD</span>
+      <label [for]="item.id">{{ item.label }}</label>
+      <input 
+        type="range" 
+        [id]="item.id" 
+        [min]="sliderMode === 'ramsey' ? item.min : 0" 
+        [max]="sliderMode === 'ramsey' ? item.max : 100" 
+        [step]="stepAmount" 
+        [(ngModel)]="item.percentage" 
+        (change)="updateAmounts()">
+      <span>{{ item.percentage| number }}%</span>
+    </div>
+
+    <div class="recommended-total">
+      <br>
+      <label>Total:</label>
+      <span class="total-amount">{{ totalRecommendedAmount | currency }} USD</span>
+      <span class="total-percentage" 
+        [ngClass]="{
+          'greater-than-total': greaterThanTotalPercentage, 
+          'less-than-total': lessThanTotalPercentage,
+          'equals-total': equalsTotalPercentage
+        }">
+        {{ totalPercentage | number }}%
+      </span>
+    </div>
+  </main>
+</div>

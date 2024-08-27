@@ -1,0 +1,24 @@
+<div class="app-container">
+<main>
+<form [formGroup]="expenseForm.expenseForm">
+  <header> EXPENSES </header>
+
+  <div class="financial-input-item" *ngFor="let item of expenseItems">
+    <label [for]="item.id">{{ item.label }}</label>
+    <span class ="financial-input">
+      <input 
+        type="number"
+        placeholder="0.00" 
+        [id]="item.id"
+        [formControlName]="item.formControlName">
+      <span>USD</span>
+    </span>
+  </div>
+</form>
+  
+<div class ="total">
+  <label for="total-expenses">TOTAL EXPENSES</label>
+  <span class="total-number">{{ totalExpense | currency}} USD</span>
+</div>
+</main>
+</div>

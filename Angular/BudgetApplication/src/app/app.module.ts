@@ -24,7 +24,18 @@ import { QuestionnaireComponent } from './views/questionnaire/questionnaire.comp
   import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { NavigationComponent } from './navigation/navigation.component';
+import { QuestionComponent } from './views/questionnaire/financial-question/question/question.component';
+//
 
+// MatSelect
+import {MatSelectModule} from '@angular/material/select';
+
+// Overview
+import { OverviewComponent } from './views/overview/overview.component';
+import { IncomeComponent } from './views/income/income.component';
+import { ExpensesComponent } from './views/expenses/expenses.component';
+import { NetIncomeComponent } from './views/net-income/net-income.component';
+import { RecommendedComponent } from './views/recommended/recommended.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +44,17 @@ import { NavigationComponent } from './navigation/navigation.component';
 
     //Toolbar components
     NavigationComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    QuestionComponent,
+    OverviewComponent,
+    RecommendedComponent,
     //End Toolbar components
+
+    //Financial Components
+    IncomeComponent,
+    ExpensesComponent,
+    NetIncomeComponent
+    //
 
   ],
   imports: [
@@ -45,6 +65,8 @@ import { NavigationComponent } from './navigation/navigation.component';
       //router paths
       {path: 'budget', component: BudgetComponent},
       {path: 'questionnaire', component: QuestionnaireComponent},
+      {path: 'overview', component: OverviewComponent},
+      {path: 'recommended', component: RecommendedComponent},
     ]),
     //END router module
     
@@ -57,6 +79,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     //Stepper
     MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule, ReactiveFormsModule, MatListModule,
     //END Stepper imports
+
+    //Select (dropdown)
+    MatSelectModule
   ],
   providers: [FinancialInfoService],
   bootstrap: [AppComponent]
